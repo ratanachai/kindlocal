@@ -5,11 +5,7 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 // App constants, and Load places data
 const AUDIO_BASE_URL = "https://peyrone.pythonanywhere.com/text-to-speech"
-let places; const fs = require('fs');
-fs.readFile('./data/places_en2th.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  places = JSON.parse(data);
-});
+const places = require('./data/places_en2th.json');
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
